@@ -10,13 +10,13 @@ export class EntryScreen extends Scene {
         this.ypos = 0;
     }
 
-    async create() {
-
-
+    preload() {
         
 
+    }
 
-        this.dragon = this.add.image(160, this.ypos, 'other_logo');
+    create() {
+        this.dragon = this.add.image(160, this.ypos, "axe");
         this.msg_text = this.add.text(160, 15, 'SELECT CHARACTER\n', {
             fontFamily: 'courier new', fontSize: 17, color: '#ffffff',
             stroke: '#000000', strokeThickness: 0,
