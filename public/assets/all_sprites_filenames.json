@@ -1,8 +1,9 @@
 {
   "battle_axe2": "battle_axe2.png",
-  "bg": "bg.png",
   "axe": "folder/axe.png",
   "gargoyle": "gargoyle.png",
-  "logo": "logo.png",
-  "second_logo": "second_logo.png"
+  "claymore": "weapons/claymore/claymore.png",
+  "claymore_1": "weapons/claymore/claymore_1.png",
+  "evil_claymore": "weapons/claymore/evil_claymore.png",
+  "good_claymore": "weapons/claymore/good_claymore.png"
 }

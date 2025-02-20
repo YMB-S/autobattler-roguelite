@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const assetsDir = '../public/assets';
-const outputFile = '../public/assets/all_sprites_filenames.json';
+const assetsDir = 'public/assets';
+const outputFile = 'public/assets/all_sprites_filenames.json';
 
 interface ImageList {
     [key: string]: string;

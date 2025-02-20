@@ -16,7 +16,7 @@ export class EntryScreen extends Scene {
     }
 
     create() {
-        this.dragon = this.add.image(160, this.ypos, "axe");
+        this.dragon = this.add.image(160, this.ypos, "evil_claymore");
         this.msg_text = this.add.text(160, 15, 'SELECT CHARACTER\n', {
             fontFamily: 'courier new', fontSize: 17, color: '#ffffff',
             stroke: '#000000', strokeThickness: 0,
