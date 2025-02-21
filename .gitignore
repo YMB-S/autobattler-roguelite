@@ -25,6 +25,4 @@ dist-ssr
 *.sw?
 log.js
 
-public/*
 docs/*
-*.png
