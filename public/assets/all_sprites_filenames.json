@@ -1,10 +1,14 @@
 {
-  "axe": "axe.png",
-  "battle_axe2": "battle_axe2.png",
-  "gargoyle": "gargoyle.png",
-  "body_human_m": "player/body/body_human_m.png",
-  "claymore": "weapons/claymore/claymore.png",
-  "claymore_1": "weapons/claymore/claymore_1.png",
-  "evil_claymore": "weapons/claymore/evil_claymore.png",
-  "good_claymore": "weapons/claymore/good_claymore.png"
+  "thick_8x8": "fonts/thick_8x8.png",
+  "axe": "sprites/axe.png",
+  "battle_axe2": "sprites/battle_axe2.png",
+  "gargoyle": "sprites/gargoyle.png",
+  "player_body_human_f": "sprites/player/body/player_body_human_f.png",
+  "player_body_human_m": "sprites/player/body/player_body_human_m.png",
+  "32x32_black": "sprites/ui/32x32_black.png",
+  "btn_demo": "sprites/ui/btn_demo.png",
+  "claymore": "sprites/weapons/claymore/claymore.png",
+  "claymore_1": "sprites/weapons/claymore/claymore_1.png",
+  "evil_claymore": "sprites/weapons/claymore/evil_claymore.png",
+  "good_claymore": "sprites/weapons/claymore/good_claymore.png"
 }

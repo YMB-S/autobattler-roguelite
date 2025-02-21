@@ -1,36 +1,40 @@
 import { Scene } from 'phaser';
+import { TextPositions } from '../constants/TextPositions';
 
 export class EntryScreen extends Scene {
     ypos: integer;
     dragon: Phaser.GameObjects.Image;
-    msg_text: Phaser.GameObjects.Text;
+    msg_text: Phaser.GameObjects.BitmapText;
+    msg_text2: Phaser.GameObjects.BitmapText;
 
     constructor() {
         super('EntryScreen');
-        this.ypos = 0;
-    }
-
-    preload() {
-        
-
     }
 
     create() {
-        this.dragon = this.add.image(160, this.ypos, "evil_claymore");
-        this.msg_text = this.add.text(160, 15, 'SELECT CHARACTER\n', {
-            fontFamily: 'courier new', fontSize: 17, color: '#ffffff',
-            stroke: '#000000', strokeThickness: 0,
-            align: 'center', 
-            
-        }).setOrigin(0.5, 0);
-        //this.cameras.main.setRoundPixels(true);
-
+        this.createUI();
     }
 
-    update(){
-        this.dragon.y++;
-        if (this.dragon.y >= 320){
-            this.dragon.y = 0;
+    createUI() {
+        const welcomeText = this.add.bitmapText(160, TextPositions.topOfScreenTextYPosition, "pixelfont", 'ROGUE LEGION', 20).setOrigin(0.5, 0.5);
+
+        const startBtnPos = [160, 160];
+        const startButton = this.add.image(startBtnPos[0], startBtnPos[1], "btn_demo").setOrigin(0.5, 0.5);
+        const startButtonText = this.add.bitmapText(startBtnPos[0], startBtnPos[1], "pixelfont", 'Start', 10).setOrigin(0.5, 0.5);
+
+        startButton.setInteractive();
+        startButton.on('pointerdown', () => {
+            this.startGame();
+        });
+    }
+
+    startGame() {
+        const playerBodySprite = localStorage.getItem('playerBodySprite');
+        if (playerBodySprite != null) {
+            this.scene.start('MainMenu');
+        } else {
+            this.scene.start('CharacterSelect');
         }
+
     }
 }

@@ -1,5 +1,4 @@
 import { Scene } from 'phaser';
-import { SpriteRepository } from '../util/SpriteRepository';
 
 export class Preloader extends Scene
 {
@@ -21,14 +20,16 @@ export class Preloader extends Scene
 
     preload ()
     {
+        let file = 'thick_8x8';
+        this.load.bitmapFont('pixelfont', 'assets/fonts/' + file + '.png', 'assets/fonts/' + file + '.xml');
+
+        // Import sprites from auto-generated list
         this.load.setPath('assets');
-
         let data = this.cache.json.get('testJson');
-        //SpriteRepository.imageMap = data;
-
         for (var entry in data) {
             this.load.image(entry, data[entry]);
         }
+
         this.load.start();
     }
 

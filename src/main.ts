@@ -1,6 +1,9 @@
 import { Boot } from './scenes/Boot';
 import { Preloader } from './scenes/Preloader';
 import { EntryScreen } from './scenes/EntryScreen';
+import { MainMenu } from './scenes/MainMenu';
+import { CharacterSelect } from './scenes/CharacterSelect';
+
 
 import { Game, Types } from "phaser";
 
@@ -21,8 +24,9 @@ const config: Types.Core.GameConfig = {
     scene: [
         Boot,
         Preloader,
-        EntryScreen
-        // MainMenu,
+        EntryScreen,
+        MainMenu,
+        CharacterSelect
         // MainGame,
         // GameOver,
         // EntryScreen
