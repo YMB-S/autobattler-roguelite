@@ -1,5 +1,6 @@
 import { Scene } from 'phaser';
-import { TextPositions } from '../constants/TextPositions';
+import { UIElementPositions } from '../constants/UIElementPositions';
+import { GameSaveData } from '../GameSaveData';
 
 export class CharacterSelect extends Scene {
 
@@ -8,7 +9,7 @@ export class CharacterSelect extends Scene {
     selectionGridPosition: integer[] = [50, 100];
     rows: integer = 4;
     columns: integer = 4;
-    spaceBetweenPortraits: integer = 40;
+    spaceBetweenPortraits: integer = UIElementPositions.spaceBetweenGridItems;
 
     sprites: Phaser.GameObjects.Image[] = new Array();
 
@@ -18,36 +19,41 @@ export class CharacterSelect extends Scene {
 
     create() {
         this.setupText();
-        this.setupCharacterPortraits();
+        this.setupSelectionGrid();
     }
 
     setupText() {
-        this.add.bitmapText(160, TextPositions.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
+        this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
     }
 
-    setupCharacterPortraits() {
+    setupSelectionGrid() {
+        this.setupCharacterSprites();
+        this.setupBackgroundPanels();
+    }
 
+    setupCharacterSprites() {
         for (var i = 0; i < this.columns; i++) {
             for (var j = 0; j < this.rows; j++) {
                 if (this.spriteNames.length == 0) {
                     break;
                 }
-                
                 var xPos = this.selectionGridPosition[0] + (j * this.spaceBetweenPortraits);
                 var yPos = this.selectionGridPosition[1] + (i * this.spaceBetweenPortraits);
-                               
+
                 var spriteName: string = this.spriteNames.pop()!;
                 var characterPortrait = this.add.image(xPos, yPos, spriteName).setOrigin(0.5, 0.5)
                 this.sprites.push(characterPortrait);
             }
         }
+    }
 
+    setupBackgroundPanels() {
         this.sprites.forEach(element => {
             let background = this.add.image(element.x, element.y, "32x32_black").setOrigin(0.5, 0.5)
             background.setDepth(-1);
             element.setInteractive();
             element.on("pointerdown", () => {
-                localStorage.setItem('playerBodySprite', element.texture.key);
+                GameSaveData.getInstance().setPlayerBodySpriteName(element.texture.key);
                 this.scene.start('MainMenu');
             });
         });

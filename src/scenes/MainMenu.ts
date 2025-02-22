@@ -1,5 +1,5 @@
 import { Scene, GameObjects } from 'phaser';
-import { TextPositions } from '../constants/TextPositions';
+import { UIElementPositions } from '../constants/UIElementPositions';
 
 export class MainMenu extends Scene
 {
@@ -17,7 +17,7 @@ export class MainMenu extends Scene
     }
 
     createUI() {
-        const welcomeText = this.add.bitmapText(160, TextPositions.topOfScreenTextYPosition, "pixelfont", 'MAIN MENU', 20).setOrigin(0.5, 0.5);
+        const welcomeText = this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'MAIN MENU', 20).setOrigin(0.5, 0.5);
 
         const fightBtnPos = [160, 120];
         const fightButton = this.add.image(fightBtnPos[0], fightBtnPos[1], "btn_demo").setOrigin(0.5, 0.5);
@@ -39,12 +39,10 @@ export class MainMenu extends Scene
     }
 
     startFight() {
-        //this.scene.start('MainMenu');
-        console.log('fight');
+        this.scene.start('BattleZoneSelection');
     }
 
     openArsenal() {
-        //this.scene.start('MainMenu');
         console.log('arsenal');
     }
 }

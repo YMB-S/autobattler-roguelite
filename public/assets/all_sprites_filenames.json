@@ -2,6 +2,7 @@
   "thick_8x8": "fonts/thick_8x8.png",
   "axe": "sprites/axe.png",
   "battle_axe2": "sprites/battle_axe2.png",
+  "gateway_dngn_enter": "sprites/environment/gateways/gateway_dngn_enter.png",
   "gargoyle": "sprites/gargoyle.png",
   "player_body_human_f": "sprites/player/body/player_body_human_f.png",
   "player_body_human_m": "sprites/player/body/player_body_human_m.png",

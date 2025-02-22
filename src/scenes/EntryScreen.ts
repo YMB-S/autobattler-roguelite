@@ -1,5 +1,6 @@
 import { Scene } from 'phaser';
-import { TextPositions } from '../constants/TextPositions';
+import { UIElementPositions } from '../constants/UIElementPositions';
+import { GameSaveData } from '../GameSaveData';
 
 export class EntryScreen extends Scene {
     ypos: integer;
@@ -16,7 +17,7 @@ export class EntryScreen extends Scene {
     }
 
     createUI() {
-        const welcomeText = this.add.bitmapText(160, TextPositions.topOfScreenTextYPosition, "pixelfont", 'ROGUE LEGION', 20).setOrigin(0.5, 0.5);
+        const welcomeText = this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'ROGUE LEGION', 20).setOrigin(0.5, 0.5);
 
         const startBtnPos = [160, 160];
         const startButton = this.add.image(startBtnPos[0], startBtnPos[1], "btn_demo").setOrigin(0.5, 0.5);
@@ -29,12 +30,10 @@ export class EntryScreen extends Scene {
     }
 
     startGame() {
-        const playerBodySprite = localStorage.getItem('playerBodySprite');
-        if (playerBodySprite != null) {
+        if (GameSaveData.getInstance().saveDataExists()) {
             this.scene.start('MainMenu');
         } else {
             this.scene.start('CharacterSelect');
         }
-
     }
 }
