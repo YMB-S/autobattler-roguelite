@@ -1,12 +1,13 @@
 import { GameObjects } from "phaser";
+import { RogueLegionItem } from "../models/RogueLegionItem";
 
-export class GameSaveData {
-    static instance: GameSaveData | undefined = undefined;
+export class GameDataService {
+    static instance: GameDataService | undefined = undefined;
     gameSaveData: Map<string, string> = new Map<string, string>();
 
-    public static getInstance() : GameSaveData {
+    public static getInstance() : GameDataService {
         if (this.instance == undefined) {
-            this.instance = new GameSaveData();
+            this.instance = new GameDataService();
         }
         return this.instance;
     }
@@ -37,9 +38,13 @@ export class GameSaveData {
         this.savePlayerData();
     }
 
-    public getItemsInPlayerArsenal() : GameObjects.Image[] {
-        var jsonItems = this.gameSaveData.get("itemsInPlayerArsenal") || "";
-        if (jsonItems.length == 0) { return new Array(); }
-        return JSON.parse(jsonItems);
+    public getItemsInPlayerArsenal() : void {
+        // return [new RogueLegionItem(
+        //     "Test Item",
+        //     GameObjects.Image
+        // )];
+        //var jsonItems = this.gameSaveData.get("itemsInPlayerArsenal") || "";
+        //if (jsonItems.length == 0) { return new Array(); }
+        //return JSON.parse(jsonItems);
     }
 }

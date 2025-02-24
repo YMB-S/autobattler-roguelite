@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-import { UIElementPositions } from "../../constants/UIElementPositions";
+import { Constants } from "../../constants/Constants";
 
 export class BattleEquipmentSelection extends Scene {
     constructor() {
@@ -7,7 +7,7 @@ export class BattleEquipmentSelection extends Scene {
     }
 
     create() {
-        const welcomeText = this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'EQUIPMENT SELECT', 20).setOrigin(0.5, 0.5);
+        const welcomeText = this.add.bitmapText(Constants.screenWidth / 2, Constants.topOfScreenTextYPosition, "pixelfont", 'EQUIPMENT SELECT', 30).setOrigin(0.5, 0.5);
         // this.add.bitmapText(50, 160, "pixelfont", 'HEAD', 10).setOrigin(0.5, 0.5);
         // this.add.bitmapText(50, 170, "pixelfont", 'BODY', 10).setOrigin(0.5, 0.5);
         // this.add.bitmapText(50, 180, "pixelfont", 'LEGS', 10).setOrigin(0.5, 0.5);

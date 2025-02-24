@@ -1,5 +1,5 @@
 import { Scene, GameObjects } from 'phaser';
-import { UIElementPositions } from '../constants/UIElementPositions';
+import { Constants } from '../constants/Constants';
 
 export class MainMenu extends Scene
 {
@@ -17,20 +17,20 @@ export class MainMenu extends Scene
     }
 
     createUI() {
-        const welcomeText = this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'MAIN MENU', 20).setOrigin(0.5, 0.5);
+        const welcomeText = this.add.bitmapText(Constants.screenWidth / 2, Constants.topOfScreenTextYPosition, "pixelfont", 'MAIN MENU', 30).setOrigin(0.5, 0.5);
 
-        const fightBtnPos = [160, 120];
-        const fightButton = this.add.image(fightBtnPos[0], fightBtnPos[1], "btn_demo").setOrigin(0.5, 0.5);
-        const fightButtonText = this.add.bitmapText(fightBtnPos[0], fightBtnPos[1], "pixelfont", 'Fight', 10).setOrigin(0.5, 0.5);
+        const fightBtnPos = [Constants.screenWidth / 2, (Constants.screenHeight / 2) - 80];
+        const fightButton = this.add.image(fightBtnPos[0], fightBtnPos[1], "btn_demo").setOrigin(0.5, 0.5).setScale(2);
+        const fightButtonText = this.add.bitmapText(fightBtnPos[0], fightBtnPos[1], "pixelfont", 'Fight', 10).setOrigin(0.5, 0.5).setScale(2);
 
         fightButton.setInteractive();
         fightButton.on('pointerdown', () => {
             this.startFight();
         });
 
-        const arsenalBtnPos = [160, 160];
-        const arsenalButton = this.add.image(arsenalBtnPos[0], arsenalBtnPos[1], "btn_demo").setOrigin(0.5, 0.5);
-        const arsenalButtonText = this.add.bitmapText(arsenalBtnPos[0], arsenalBtnPos[1], "pixelfont", 'Arsenal', 10).setOrigin(0.5, 0.5);
+        const arsenalBtnPos = [Constants.screenWidth / 2, Constants.screenHeight / 2];
+        const arsenalButton = this.add.image(arsenalBtnPos[0], arsenalBtnPos[1], "btn_demo").setOrigin(0.5, 0.5).setScale(2);
+        const arsenalButtonText = this.add.bitmapText(arsenalBtnPos[0], arsenalBtnPos[1], "pixelfont", 'Arsenal', 10).setOrigin(0.5, 0.5).setScale(2);
 
         arsenalButton.setInteractive();
         arsenalButton.on('pointerdown', () => {

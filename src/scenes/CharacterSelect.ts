@@ -1,6 +1,6 @@
 import { Scene } from 'phaser';
-import { UIElementPositions } from '../constants/UIElementPositions';
-import { GameSaveData } from '../GameSaveData';
+import { Constants } from '../constants/Constants';
+import { GameDataService } from '../services/GameDataService';
 
 export class CharacterSelect extends Scene {
 
@@ -9,7 +9,7 @@ export class CharacterSelect extends Scene {
     selectionGridPosition: integer[] = [50, 100];
     rows: integer = 4;
     columns: integer = 4;
-    spaceBetweenPortraits: integer = UIElementPositions.spaceBetweenGridItems;
+    spaceBetweenPortraits: integer = Constants.spaceBetweenGridItems;
 
     sprites: Phaser.GameObjects.Image[] = new Array();
 
@@ -23,7 +23,7 @@ export class CharacterSelect extends Scene {
     }
 
     setupText() {
-        this.add.bitmapText(160, UIElementPositions.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
+        this.add.bitmapText(160, Constants.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
     }
 
     setupSelectionGrid() {
@@ -53,7 +53,7 @@ export class CharacterSelect extends Scene {
             background.setDepth(-1);
             element.setInteractive();
             element.on("pointerdown", () => {
-                GameSaveData.getInstance().setPlayerBodySpriteName(element.texture.key);
+                GameDataService.getInstance().setPlayerBodySpriteName(element.texture.key);
                 this.scene.start('MainMenu');
             });
         });
