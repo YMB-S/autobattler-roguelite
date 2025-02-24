@@ -8,6 +8,7 @@ import { CharacterSelect } from './scenes/CharacterSelect';
 import { Game, Types } from "phaser";
 import { BattleZoneSelection } from './scenes/battle/BattleZoneSelection';
 import { Battle } from './scenes/battle/Battle';
+import { BattleEquipmentSelection } from './scenes/battle/BattleEquipmentSelection';
 
 
 //  Find out more information about the Game Config at:
@@ -30,6 +31,7 @@ const config: Types.Core.GameConfig = {
         MainMenu,
         CharacterSelect,
         BattleZoneSelection,
+        BattleEquipmentSelection,
         Battle
     ]
 };

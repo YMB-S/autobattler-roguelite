@@ -18,7 +18,7 @@ export class BattleZoneSelection extends Scene {
         demoLair.setBlendMode(Phaser.BlendModes.LUMINOSITY);
         demoLair.setInteractive();
         demoLair.on('pointerdown', () => {
-            this.scene.start('Battle');
+            this.scene.start('BattleEquipmentSelection');
         });
 
         const demoLairText = this.add.bitmapText(demoLairPosition[0], demoLairPosition[1]+25, "pixelfont", 'Plains Lair', 10).setOrigin(0.5, 0.5);
