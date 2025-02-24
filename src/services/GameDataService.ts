@@ -38,13 +38,11 @@ export class GameDataService {
         this.savePlayerData();
     }
 
-    public getItemsInPlayerArsenal() : void {
-        // return [new RogueLegionItem(
-        //     "Test Item",
-        //     GameObjects.Image
-        // )];
-        //var jsonItems = this.gameSaveData.get("itemsInPlayerArsenal") || "";
-        //if (jsonItems.length == 0) { return new Array(); }
-        //return JSON.parse(jsonItems);
+    public getItemsInPlayerArsenal(): RogueLegionItem[] {
+        return [new RogueLegionItem(
+            "Test Item",
+            "demo_sword_inventory",
+            "demo_sword_paperdoll"
+        )];
     }
 }

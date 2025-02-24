@@ -11,5 +11,7 @@
   "claymore": "sprites/weapons/claymore/claymore.png",
   "claymore_1": "sprites/weapons/claymore/claymore_1.png",
   "evil_claymore": "sprites/weapons/claymore/evil_claymore.png",
-  "good_claymore": "sprites/weapons/claymore/good_claymore.png"
+  "good_claymore": "sprites/weapons/claymore/good_claymore.png",
+  "demo_sword_inventory": "sprites/weapons/demo_sword_inventory.png",
+  "demo_sword_paperdoll": "sprites/weapons/demo_sword_paperdoll.png"
 }
