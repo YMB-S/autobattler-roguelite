@@ -29,8 +29,8 @@ export class GameDataService {
         return this.gameSaveData.size > 0;
     }
 
-    public getPlayerBodySpriteName() : string | undefined {
-        return this.gameSaveData.get("playerBodySpriteName");
+    public getPlayerBodySpriteName() : string {
+        return this.gameSaveData.get("playerBodySpriteName") ?? "";
     }
 
     public setPlayerBodySpriteName(spriteName: string): void {
@@ -39,10 +39,24 @@ export class GameDataService {
     }
 
     public getItemsInPlayerArsenal(): RogueLegionItem[] {
+        let array:RogueLegionItem[] = [];
+        for (let index = 0; index < 50; index++) {
+            array.push(new RogueLegionItem(
+                "Test Item",
+                "demo_sword_inventory",
+                "demo_sword_paperdoll"
+            ));
+        }
+        return array;
         return [new RogueLegionItem(
             "Test Item",
             "demo_sword_inventory",
             "demo_sword_paperdoll"
-        )];
+        ), new RogueLegionItem(
+            "Test Item",
+            "demo_sword_inventory",
+            "demo_sword_paperdoll"
+        )
+        ];
     }
 }
