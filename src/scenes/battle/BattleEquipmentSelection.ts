@@ -12,6 +12,8 @@ export class BattleEquipmentSelection extends Scene {
     inventoryTablePosition: integer[] = [380, 160];
     inventoryTableDimensions: integer[] = [5, 7];
 
+    inventoryMouseHoverHighlight: GameObjects.Rectangle;
+
     constructor() {
         super('BattleEquipmentSelection');
         this.gameData = GameDataService.getInstance();
@@ -19,7 +21,9 @@ export class BattleEquipmentSelection extends Scene {
 
     create() {
         const welcomeText = this.add.bitmapText(Constants.screenWidth / 2, Constants.topOfScreenTextYPosition, "pixelfont", 'EQUIPMENT SELECT', 30).setOrigin(0.5, 0.5);
-        
+
+        this.inventoryMouseHoverHighlight = this.add.rectangle(0, 0, Constants.spaceBetweenGridItems, Constants.spaceBetweenGridItems).setStrokeStyle(1, 0x000000);
+
         // this.add.bitmapText(380, 160, "pixelfont", 'HEAD', 10).setOrigin(0.5, 0.5);
         // this.add.bitmapText(380, 170, "pixelfont", 'BODY', 10).setOrigin(0.5, 0.5);
         // this.add.bitmapText(380, 180, "pixelfont", 'LEGS', 10).setOrigin(0.5, 0.5);
@@ -49,7 +53,7 @@ export class BattleEquipmentSelection extends Scene {
                 const paperDollItemXPosition = this.playerPaperDollPosition[0];
                 const paperDollItemYPosition = this.playerPaperDollPosition[1];
 
-                const item = items.pop();
+                const item = items.pop()!;
                 item!.addToScene(
                     this,
                     [inventoryItemXPosition, inventoryItemYPosition],
@@ -57,9 +61,24 @@ export class BattleEquipmentSelection extends Scene {
                     1.5, this.playerPaperDollScale
                 );
 
-                item!.setInventorySpriteOnClick(() => {console.log("item equipped");});
-                item!.setPaperDollSpriteOnClick(() => { console.log("item unequipped"); });
+                this.setInventoryTableItemCallbacks(item);
+                this.setPaperDollItemCallbacks(item);
             }
         }
+    }
+
+    setInventoryTableItemCallbacks(item: RogueLegionItem) {
+        item.setInventorySpriteCallback("pointerdown", () => { console.log("item equipped"); });
+
+        item.setInventorySpriteCallback("pointerover", () => {
+            this.inventoryMouseHoverHighlight.setAlpha(1);        
+            this.inventoryMouseHoverHighlight.setPosition(item.getInventorySpritePosition()[0], item.getInventorySpritePosition()[1]);
+        });
+
+        item.setInventorySpriteCallback("pointerout", () => { this.inventoryMouseHoverHighlight.setAlpha(0); });
+    }
+
+    setPaperDollItemCallbacks(item: RogueLegionItem) {
+        item.setPaperDollSpriteCallback("pointerdown", () => { console.log("item unequipped"); });
     }
 }

@@ -40,15 +40,19 @@ export class RogueLegionItem {
         }
     }
 
-    setInventorySpriteOnClick(callback: () => void) {
-        this.inventorySprite.on("pointerdown", () => {
+    setInventorySpriteCallback(eventType: string, callback: () => void) {
+        this.inventorySprite.on(eventType, () => {
             callback();
         });
     }
 
-    setPaperDollSpriteOnClick(callback: () => void) {
-        this.paperDollSprite.on("pointerdown", () => {
+    setPaperDollSpriteCallback(eventType: string, callback: () => void) {
+        this.paperDollSprite.on(eventType, () => {
             callback();
         });
+    }
+
+    getInventorySpritePosition() : integer[] {
+        return [this.inventorySprite.x, this.inventorySprite.y];
     }
 }
