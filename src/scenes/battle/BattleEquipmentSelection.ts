@@ -133,9 +133,9 @@ export class BattleEquipmentSelection extends Scene {
 
     moveSelectedEquipmentTooltipToMouse() {
         this.selectedEquipmentTooltipBackground.x = this.game.input.mousePointer!.x;
-        this.selectedEquipmentTooltipBackground.y = this.game.input.mousePointer!.y;
+        this.selectedEquipmentTooltipBackground.y = this.game.input.mousePointer!.y - ScreenConstants.verticalSpaceBetweenTooltipAndMousePointer;
         this.selectedEquipmentTooltipText.x = this.game.input.mousePointer!.x;
-        this.selectedEquipmentTooltipText.y = this.game.input.mousePointer!.y;
+        this.selectedEquipmentTooltipText.y = this.game.input.mousePointer!.y - ScreenConstants.verticalSpaceBetweenTooltipAndMousePointer;
     }
 
     equipItem(item: RogueLegionItem) {
