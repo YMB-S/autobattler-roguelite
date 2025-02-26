@@ -31,6 +31,7 @@ function getFiles(dir: string, basePath = ''): ImageList {
                 let itemName = itemPrefix.slice(1);
                 const key = path.basename(itemName, extension);       
                 filesList[key] = relativePath.replace(/\\/g, '/');
+                console.log(key + " | " + relativePath.replace(/\\/g, '/'));
             }
         }
     });
