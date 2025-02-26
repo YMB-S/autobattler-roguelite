@@ -7,8 +7,8 @@
     "scripts": {
         "dev": "ts-node ./util/FileLoader.ts && node log.js dev &parcel index.html --no-cache --config ./parcel/.parcel.dev --open",
         "build": "ts-node ./util/FileLoader.ts && node log.js build &parcel build index.html --public-url _relativeroute_ --no-source-maps --log-level error --config ./parcel/.parcel.prod",
-        "dev-nolog": "parcel index.html --no-cache --config ./parcel/.parcel.dev --open",
-        "build-nolog": "parcel build index.html --public-url _relativeroute_ --no-source-maps --log-level error --config ./parcel/.parcel.prod"
+        "dev-nolog": "ts-node ./util/FileLoader.ts && parcel index.html --no-cache --config ./parcel/.parcel.dev --open",
+        "build-nolog": "ts-node ./util/FileLoader.ts && parcel build index.html --public-url _relativeroute_ --no-source-maps --log-level error --config ./parcel/.parcel.prod"
     },
     "repository": {
         "type": "git",
