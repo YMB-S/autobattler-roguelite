@@ -2,10 +2,13 @@ import { GameObjects, Scene } from "phaser";
 import { ScreenConstants } from "../../constants/ScreenConstants";
 import { GameDataService } from "../../services/GameDataService";
 import { RogueLegionItem } from "../../models/RogueLegionItem";
+import { PlayerEquippedItemsService } from "../../services/PlayerEquippedItemsService";
+import { EquipmentSlot } from "../../constants/Enums";
 
 export class BattleEquipmentSelection extends Scene {
     paperDollBase: GameObjects.Image;
-    gameData: GameDataService;
+    gameDataService: GameDataService;
+    equippedItemsService: PlayerEquippedItemsService;
 
     playerPaperDollPosition: integer[] = [160, 160];
     playerPaperDollScale: integer = 4;
@@ -20,7 +23,8 @@ export class BattleEquipmentSelection extends Scene {
 
     constructor() {
         super('BattleEquipmentSelection');
-        this.gameData = GameDataService.getInstance();
+        this.gameDataService = GameDataService.getInstance();
+        this.equippedItemsService = PlayerEquippedItemsService.getInstance();
     }
 
     create() {
@@ -32,12 +36,12 @@ export class BattleEquipmentSelection extends Scene {
         this.selectedEquipmentTooltipBackground.depth = 1;
         this.selectedEquipmentTooltipText.depth = 1;
 
-        this.addPlayerPaperdoll();
-        this.addInventoryTable(this.gameData.getItemsInPlayerArsenal());
+        this.addPlayerPaperDollBase();
+        this.addInventoryTable(this.gameDataService.getItemsInPlayerArsenal());
     }
 
-    addPlayerPaperdoll() {
-        let playerBodyBaseSpriteName = this.gameData.getPlayerBodySpriteName();
+    addPlayerPaperDollBase() {
+        let playerBodyBaseSpriteName = this.gameDataService.getPlayerBodySpriteName();
         this.paperDollBase = this.add.image(this.playerPaperDollPosition[0], this.playerPaperDollPosition[1], playerBodyBaseSpriteName)
         this.paperDollBase.setScale(this.playerPaperDollScale);
     }
@@ -58,7 +62,7 @@ export class BattleEquipmentSelection extends Scene {
                     this,
                     [inventoryItemXPosition, inventoryItemYPosition],
                     [paperDollItemXPosition, paperDollItemYPosition],
-                    1.5, this.playerPaperDollScale
+                    ScreenConstants.defaultGridItemScale, this.playerPaperDollScale
                 );
 
                 // add some logic to highlight equipped items
@@ -139,11 +143,25 @@ export class BattleEquipmentSelection extends Scene {
     }
 
     equipItem(item: RogueLegionItem) {
-        item.setPaperDollSpriteAlpha(1);
+        //item.setPaperDollSpriteAlpha(1);
+        let itemSlot = EquipmentSlot.RIGHT_HAND;
+        let currentlyEquippedItem = this.equippedItemsService.getItemEquippedInSlot(itemSlot);
+        if (currentlyEquippedItem != undefined) {
+            this.unEquipItem(currentlyEquippedItem);
+        }
+        this.equippedItemsService.equipItem(EquipmentSlot.RIGHT_HAND, item);
+        this.showPaperDoll();
     }
 
     unEquipItem(item: RogueLegionItem) {
         item.setPaperDollSpriteAlpha(0);
+    }
+
+    showPaperDoll() {
+        let items = this.equippedItemsService.getEquippedItems();
+        items.forEach(item => {
+            item.setPaperDollSpriteAlpha(1);
+        });
     }
 
     highlightEquippedItemsInInventoryTable() {

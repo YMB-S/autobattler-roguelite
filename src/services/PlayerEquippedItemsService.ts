@@ -1,3 +1,4 @@
+import { EquipmentSlot } from "../constants/Enums";
 import { RogueLegionItem } from "../models/RogueLegionItem";
 
 interface EquippedItem {
@@ -23,6 +24,20 @@ export class PlayerEquippedItemsService {
         { slot: EquipmentSlot.RIGHT_HAND, item: undefined },
         { slot: EquipmentSlot.LEFT_HAND, item: undefined },
     ];
+    
+    getEquippedItems(): RogueLegionItem[] {
+        let items: RogueLegionItem[] = new Array();
+        this.equippedItems.forEach((e) => {
+            if (e.item != undefined) {
+                items.push(e.item);
+            }
+        });
+        return items;
+    }
+
+    getItemEquippedInSlot(slot: EquipmentSlot) : RogueLegionItem | undefined{
+        return this.equippedItems[slot].item;
+    }
 
     equipItem(slot: EquipmentSlot, item: RogueLegionItem) {
         this.equippedItems.find(e => e.slot == slot)!.item = item;

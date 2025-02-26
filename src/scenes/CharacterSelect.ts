@@ -4,11 +4,15 @@ import { GameDataService } from '../services/GameDataService';
 
 export class CharacterSelect extends Scene {
 
-    spriteNames: string[] = ["player_body_human_m", "player_body_human_f"].reverse();
+    spriteNames: string[] = [
+        "player_body_human_m", "player_body_human_f",
+        "player_body_orc_m", "player_body_orc_f",
+        "player_body_ogre_m", "player_body_ogre_f"
+    ].reverse();
 
-    selectionGridPosition: integer[] = [50, 100];
-    rows: integer = 4;
-    columns: integer = 4;
+    selectionGridPosition: integer[] = [80, 150];
+    rows: integer = 8;
+    columns: integer = 8;
     spaceBetweenPortraits: integer = ScreenConstants.spaceBetweenGridItems;
 
     sprites: Phaser.GameObjects.Image[] = new Array();
@@ -23,7 +27,7 @@ export class CharacterSelect extends Scene {
     }
 
     setupText() {
-        this.add.bitmapText(160, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
+        this.add.bitmapText(ScreenConstants.screenWidth/2, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 30).setOrigin(0.5, 0.5);
     }
 
     setupSelectionGrid() {
@@ -41,7 +45,7 @@ export class CharacterSelect extends Scene {
                 var yPos = this.selectionGridPosition[1] + (i * this.spaceBetweenPortraits);
 
                 var spriteName: string = this.spriteNames.pop()!;
-                var characterPortrait = this.add.image(xPos, yPos, spriteName).setOrigin(0.5, 0.5)
+                var characterPortrait = this.add.image(xPos, yPos, spriteName).setOrigin(0.5, 0.5).setScale(ScreenConstants.defaultGridItemScale);
                 this.sprites.push(characterPortrait);
             }
         }
@@ -49,7 +53,7 @@ export class CharacterSelect extends Scene {
 
     setupBackgroundPanels() {
         this.sprites.forEach(element => {
-            let background = this.add.image(element.x, element.y, "32x32_black").setOrigin(0.5, 0.5)
+            let background = this.add.image(element.x, element.y, "ui_32x32_black").setOrigin(0.5, 0.5).setScale(ScreenConstants.defaultGridItemScale);
             background.setDepth(-1);
             element.setInteractive();
             element.on("pointerdown", () => {

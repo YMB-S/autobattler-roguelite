@@ -13,7 +13,7 @@ export class BattleZoneSelection extends Scene {
         const welcomeText = this.add.bitmapText(ScreenConstants.screenWidth / 2, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'SELECT ZONE', 30).setOrigin(0.5, 0.5);
 
         var demoLairPosition = [ScreenConstants.screenWidth / 2, ScreenConstants.screenHeight / 2];
-        var demoLair = this.add.image(demoLairPosition[0], demoLairPosition[1], "gateway_dngn_enter").setOrigin(0.5, 0.5)
+        var demoLair = this.add.image(demoLairPosition[0], demoLairPosition[1], "environment_gateway_dngn_enter").setOrigin(0.5, 0.5)
         demoLair.setScale(1, 1);
         demoLair.setBlendMode(Phaser.BlendModes.LUMINOSITY);
         demoLair.setInteractive();

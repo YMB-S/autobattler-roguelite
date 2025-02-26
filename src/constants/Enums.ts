@@ -1,4 +1,4 @@
-enum EquipmentSlot {
+export enum EquipmentSlot {
     HEAD,
     BODY,
     LEGS,

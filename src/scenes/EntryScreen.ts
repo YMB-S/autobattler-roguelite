@@ -20,7 +20,7 @@ export class EntryScreen extends Scene {
         const welcomeText = this.add.bitmapText(ScreenConstants.screenWidth / 2, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'ROGUE LEGION', 30).setOrigin(0.5, 0.5);
 
         const startBtnPos = [ScreenConstants.screenWidth / 2, ScreenConstants.screenHeight / 2];
-        const startButton = this.add.image(startBtnPos[0], startBtnPos[1], "btn_demo").setOrigin(0.5, 0.5).setScale(2);
+        const startButton = this.add.image(startBtnPos[0], startBtnPos[1], "ui_btn_demo").setOrigin(0.5, 0.5).setScale(2);
         const startButtonText = this.add.bitmapText(startBtnPos[0], startBtnPos[1], "pixelfont", 'Start', 10).setOrigin(0.5, 0.5).setScale(2);
 
         startButton.setInteractive();

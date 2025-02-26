@@ -13,14 +13,23 @@ function getFiles(dir: string, basePath = ''): ImageList {
 
     fs.readdirSync(dir).forEach((file: string) => {
         const fullPath = path.join(dir, file);
-        const relativePath = path.join(basePath, file);
+        const relativePath: string = path.join(basePath, file);
 
         if (fs.statSync(fullPath).isDirectory()) {
             Object.assign(filesList, getFiles(fullPath, relativePath));
         } else {
             const extension = path.extname(file);
             if (extension == ".png") {
-                const key = path.basename(file, extension);
+                //const key = path.basename(file, extension);
+
+                let pathComponents = relativePath.split("\\");
+                delete pathComponents[pathComponents.indexOf("sprites")];
+                let itemPrefix = "";
+                pathComponents.forEach(element => {
+                    itemPrefix += "_" + element;
+                });
+                let itemName = itemPrefix.slice(1);
+                const key = path.basename(itemName, extension);       
                 filesList[key] = relativePath.replace(/\\/g, '/');
             }
         }

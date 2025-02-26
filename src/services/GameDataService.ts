@@ -39,21 +39,21 @@ export class GameDataService {
 
     public getItemsInPlayerArsenal(): RogueLegionItem[] {
         let array:RogueLegionItem[] = [];
-        for (let index = 0; index < 12; index++) {
+        for (let index = 0; index < 2; index++) {
             array.push(new RogueLegionItem(
                 "Rapier",
-                "rapier",
-                "rapier_paperdoll"
+                "weapon_rapier",
+                "weapon_paperdoll_rapier"
             ));
             array.push(new RogueLegionItem(
                 "Falchion I",
-                "falchion_1",
-                "falchion_1_paperdoll"
+                "weapon_falchion_1",
+                "weapon_paperdoll_falchion_1"
             ));
             array.push(new RogueLegionItem(
                 "Falchion 2",
-                "falchion_2",
-                "falchion_2_paperdoll"
+                "weapon_falchion_2",
+                "weapon_paperdoll_falchion_2"
             ));
         }
         return array;
