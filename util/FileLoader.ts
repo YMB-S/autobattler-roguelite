@@ -22,7 +22,7 @@ function getFiles(dir: string, basePath = ''): ImageList {
             if (extension == ".png") {
                 //const key = path.basename(file, extension);
 
-                let pathComponents = relativePath.split("\\");
+                let pathComponents = relativePath.split(path.sep);
                 delete pathComponents[pathComponents.indexOf("sprites")];
                 let itemPrefix = "";
                 pathComponents.forEach(element => {
