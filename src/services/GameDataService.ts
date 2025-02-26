@@ -1,16 +1,15 @@
-import { GameObjects } from "phaser";
 import { RogueLegionItem } from "../models/RogueLegionItem";
 
 export class GameDataService {
     static instance: GameDataService | undefined = undefined;
-    gameSaveData: Map<string, string> = new Map<string, string>();
-
     public static getInstance() : GameDataService {
         if (this.instance == undefined) {
             this.instance = new GameDataService();
         }
         return this.instance;
     }
+
+    gameSaveData: Map<string, string> = new Map<string, string>();
 
     constructor() {
         this.gameSaveData = new Map<string, string>();

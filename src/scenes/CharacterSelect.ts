@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import { Constants } from '../constants/Constants';
+import { ScreenConstants } from '../constants/ScreenConstants';
 import { GameDataService } from '../services/GameDataService';
 
 export class CharacterSelect extends Scene {
@@ -9,7 +9,7 @@ export class CharacterSelect extends Scene {
     selectionGridPosition: integer[] = [50, 100];
     rows: integer = 4;
     columns: integer = 4;
-    spaceBetweenPortraits: integer = Constants.spaceBetweenGridItems;
+    spaceBetweenPortraits: integer = ScreenConstants.spaceBetweenGridItems;
 
     sprites: Phaser.GameObjects.Image[] = new Array();
 
@@ -23,7 +23,7 @@ export class CharacterSelect extends Scene {
     }
 
     setupText() {
-        this.add.bitmapText(160, Constants.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
+        this.add.bitmapText(160, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'Select your body type', 10).setOrigin(0.5, 0.5);
     }
 
     setupSelectionGrid() {

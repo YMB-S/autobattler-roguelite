@@ -55,4 +55,12 @@ export class RogueLegionItem {
     getInventorySpritePosition() : integer[] {
         return [this.inventorySprite.x, this.inventorySprite.y];
     }
+
+    setInventorySpriteAlpha(alpha: number) {
+        this.inventorySprite.setAlpha(alpha);
+    }
+
+    setPaperDollSpriteAlpha(alpha: number) {
+        this.paperDollSprite.setAlpha(alpha);
+    }
 }

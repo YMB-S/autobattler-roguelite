@@ -1,4 +1,4 @@
-export class Constants {
+export class ScreenConstants {
 
     // UI constants
     public static topOfScreenTextYPosition: integer = 45;

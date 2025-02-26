@@ -1,5 +1,5 @@
 import { Scene } from "phaser";
-import { Constants } from "../../constants/Constants";
+import { ScreenConstants } from "../../constants/ScreenConstants";
 import { GameDataService } from "../../services/GameDataService";
 
 
@@ -10,9 +10,9 @@ export class BattleZoneSelection extends Scene {
 
     create() {
 
-        const welcomeText = this.add.bitmapText(Constants.screenWidth / 2, Constants.topOfScreenTextYPosition, "pixelfont", 'SELECT ZONE', 30).setOrigin(0.5, 0.5);
+        const welcomeText = this.add.bitmapText(ScreenConstants.screenWidth / 2, ScreenConstants.topOfScreenTextYPosition, "pixelfont", 'SELECT ZONE', 30).setOrigin(0.5, 0.5);
 
-        var demoLairPosition = [Constants.screenWidth / 2, Constants.screenHeight / 2];
+        var demoLairPosition = [ScreenConstants.screenWidth / 2, ScreenConstants.screenHeight / 2];
         var demoLair = this.add.image(demoLairPosition[0], demoLairPosition[1], "gateway_dngn_enter").setOrigin(0.5, 0.5)
         demoLair.setScale(1, 1);
         demoLair.setBlendMode(Phaser.BlendModes.LUMINOSITY);

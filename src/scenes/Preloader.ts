@@ -1,5 +1,5 @@
 import { Scene } from 'phaser';
-import { Constants } from '../constants/Constants';
+import { ScreenConstants } from '../constants/ScreenConstants';
 
 export class Preloader extends Scene
 {
@@ -9,8 +9,8 @@ export class Preloader extends Scene
     }
 
     async init (){
-        this.add.rectangle(Constants.screenWidth / 2, Constants.screenHeight / 2, 468, 32).setStrokeStyle(1, 0xffffff);
-        const bar = this.add.rectangle((Constants.screenWidth / 2) - 230, Constants.screenHeight / 2, 4, 28, 0xffffff);
+        this.add.rectangle(ScreenConstants.screenWidth / 2, ScreenConstants.screenHeight / 2, 468, 32).setStrokeStyle(1, 0xffffff);
+        const bar = this.add.rectangle((ScreenConstants.screenWidth / 2) - 230, ScreenConstants.screenHeight / 2, 4, 28, 0xffffff);
         this.load.on('progress', (progress: number) => {
             bar.width = 4 + (460 * progress);
         });
