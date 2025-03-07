@@ -3,7 +3,6 @@ import { ScreenConstants } from "../../constants/ScreenConstants";
 import { GameDataService } from "../../services/GameDataService";
 import { RogueLegionItem } from "../../models/RogueLegionItem";
 import { PlayerEquippedItemsService } from "../../services/PlayerEquippedItemsService";
-import { EquipmentSlot } from "../../constants/Enums";
 
 export class BattleEquipmentSelection extends Scene {
     paperDollBase: GameObjects.Image;
@@ -19,7 +18,6 @@ export class BattleEquipmentSelection extends Scene {
 
     selectedEquipmentTooltipBackground: GameObjects.Rectangle;
     selectedEquipmentTooltipText: GameObjects.BitmapText;
-
 
     constructor() {
         super('BattleEquipmentSelection');
@@ -38,6 +36,15 @@ export class BattleEquipmentSelection extends Scene {
 
         this.addPlayerPaperDollBase();
         this.addInventoryTable(this.gameDataService.getItemsInPlayerArsenal());
+
+        const startBtnPos = [ScreenConstants.screenWidth / 2, ScreenConstants.screenHeight / 2];
+        const startButton = this.add.image(startBtnPos[0], startBtnPos[1], "ui_btn_demo").setOrigin(0.5, 0.5).setScale(2);
+        const startButtonText = this.add.bitmapText(startBtnPos[0], startBtnPos[1], "pixelfont", 'Start', 10).setOrigin(0.5, 0.5).setScale(2);
+
+        startButton.setInteractive();
+        startButton.on('pointerdown', () => {
+            this.scene.start('Battle');
+        });
     }
 
     addPlayerPaperDollBase() {
@@ -65,6 +72,9 @@ export class BattleEquipmentSelection extends Scene {
                     ScreenConstants.defaultGridItemScale, this.playerPaperDollScale
                 );
 
+
+
+                // TODO:
                 // add some logic to highlight equipped items
                 // something like this: 
                 // retrieve all equipped items (they are RogueLegionItems)
@@ -144,17 +154,18 @@ export class BattleEquipmentSelection extends Scene {
 
     equipItem(item: RogueLegionItem) {
         //item.setPaperDollSpriteAlpha(1);
-        let itemSlot = EquipmentSlot.RIGHT_HAND;
+        let itemSlot = item.equipmentSlot;
         let currentlyEquippedItem = this.equippedItemsService.getItemEquippedInSlot(itemSlot);
         if (currentlyEquippedItem != undefined) {
             this.unEquipItem(currentlyEquippedItem);
         }
-        this.equippedItemsService.equipItem(EquipmentSlot.RIGHT_HAND, item);
+        this.equippedItemsService.equipItem(itemSlot, item);
         this.showPaperDoll();
     }
 
     unEquipItem(item: RogueLegionItem) {
         item.setPaperDollSpriteAlpha(0);
+        this.equippedItemsService.unEquipItem(item);
     }
 
     showPaperDoll() {

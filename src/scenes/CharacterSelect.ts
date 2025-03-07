@@ -5,9 +5,9 @@ import { GameDataService } from '../services/GameDataService';
 export class CharacterSelect extends Scene {
 
     spriteNames: string[] = [
-        "player_body_human_m", "player_body_human_f",
-        "player_body_orc_m", "player_body_orc_f",
-        "player_body_ogre_m", "player_body_ogre_f"
+        "body_human_m", "body_human_f",
+        "body_orc_m", "body_orc_f",
+        "body_ogre_m", "body_ogre_f"
     ].reverse();
 
     selectionGridPosition: integer[] = [80, 150];

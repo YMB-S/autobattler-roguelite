@@ -25,3 +25,4 @@ dist-ssr
 log.js
 
 docs/*
+open-dev-windows.bat

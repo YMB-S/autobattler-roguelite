@@ -1,3 +1,4 @@
+import { EquipmentSlot } from "../constants/Enums";
 import { RogueLegionItem } from "../models/RogueLegionItem";
 
 export class GameDataService {
@@ -42,18 +43,33 @@ export class GameDataService {
         for (let index = 0; index < 2; index++) {
             array.push(new RogueLegionItem(
                 "Rapier",
+                EquipmentSlot.RIGHT_HAND,
                 "weapon_rapier",
                 "weapon_paperdoll_rapier"
             ));
             array.push(new RogueLegionItem(
                 "Falchion I",
+                EquipmentSlot.RIGHT_HAND,
                 "weapon_falchion_1",
                 "weapon_paperdoll_falchion_1"
             ));
             array.push(new RogueLegionItem(
                 "Falchion 2",
+                EquipmentSlot.RIGHT_HAND,
                 "weapon_falchion_2",
                 "weapon_paperdoll_falchion_2"
+            ));
+            array.push(new RogueLegionItem(
+                "Buckler",
+                EquipmentSlot.LEFT_HAND,
+                "shield_buckler_1",
+                "shield_paperdoll_buckler_1"
+            ));
+            array.push(new RogueLegionItem(
+                "Eternal Torment",
+                EquipmentSlot.HEAD,
+                "helmet_eternal_torment",
+                "helmet_paperdoll_eternal_torment"
             ));
         }
         return array;

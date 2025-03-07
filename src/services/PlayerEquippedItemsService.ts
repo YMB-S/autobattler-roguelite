@@ -23,6 +23,8 @@ export class PlayerEquippedItemsService {
         { slot: EquipmentSlot.BOOTS, item: undefined },
         { slot: EquipmentSlot.RIGHT_HAND, item: undefined },
         { slot: EquipmentSlot.LEFT_HAND, item: undefined },
+        { slot: EquipmentSlot.RING, item: undefined },
+        { slot: EquipmentSlot.RING, item: undefined }
     ];
     
     getEquippedItems(): RogueLegionItem[] {
@@ -40,6 +42,17 @@ export class PlayerEquippedItemsService {
     }
 
     equipItem(slot: EquipmentSlot, item: RogueLegionItem) {
-        this.equippedItems.find(e => e.slot == slot)!.item = item;
+        let availableSlot = this.equippedItems.find(e => e.slot == slot && e.item == undefined);
+        if (availableSlot) {
+            availableSlot.item = item;
+        }
+        else {
+            let slotToMakeAvailable = this.equippedItems.find(e => e.slot == slot);
+            slotToMakeAvailable!.item = item;
+        }
+    }
+
+    unEquipItem(item: RogueLegionItem) {
+        this.equippedItems.find(e => e.slot == item.equipmentSlot)!.item = undefined;
     }
 }

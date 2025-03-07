@@ -1,8 +1,10 @@
 import { GameObjects, Scene } from "phaser";
+import { EquipmentSlot } from "../constants/Enums";
 
 
 export class RogueLegionItem {
     itemName: string;
+    equipmentSlot: EquipmentSlot;
     inventorySpriteName: string | undefined;
     paperDollSpriteName: string | undefined;
     inventorySprite: GameObjects.Image;
@@ -11,8 +13,9 @@ export class RogueLegionItem {
     paperDollSpriteOnClick: () => void;
 
 
-    constructor(itemName: string, inventorySpriteName: string | undefined, paperDollSpriteName: string | undefined) {
+    constructor(itemName: string, equipmentSlot: EquipmentSlot, inventorySpriteName: string | undefined, paperDollSpriteName: string | undefined) {
         this.itemName = itemName;
+        this.equipmentSlot = equipmentSlot;
         this.inventorySpriteName = inventorySpriteName;
         this.paperDollSpriteName = paperDollSpriteName;
     }

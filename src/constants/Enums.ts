@@ -4,5 +4,6 @@ export enum EquipmentSlot {
     LEGS,
     BOOTS,
     RIGHT_HAND,
-    LEFT_HAND
+    LEFT_HAND,
+    RING
 }
